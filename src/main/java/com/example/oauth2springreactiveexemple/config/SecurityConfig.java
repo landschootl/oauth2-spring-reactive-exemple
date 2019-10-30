@@ -9,9 +9,9 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityWebFilterChain configure(ServerHttpSecurity http) throws Exception {
+    public SecurityWebFilterChain configure(ServerHttpSecurity http) {
         return http.authorizeExchange()
-                .pathMatchers("/about").permitAll()
+                .pathMatchers("/about", "/me").permitAll()
                 .anyExchange().authenticated()
                 .and().oauth2Login()
                 .and().build();
